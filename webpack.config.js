@@ -3,7 +3,7 @@ const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
 
-const outputPath = path.resolve(__dirname,'dist')
+const outputPath = path.resolve(__dirname,'/dist/')
 
 
 const webpackConfig  = {
@@ -14,6 +14,7 @@ const webpackConfig  = {
     },
     output:{
         path: outputPath,
+        publicPath: '/',
         filename: "bundle.js"
     },
     module: {
@@ -69,10 +70,11 @@ const webpackConfig  = {
         new webpack.HotModuleReplacementPlugin
     ],
     devServer:{
+        publicPath: "/",
         contentBase: path.join(__dirname, "dist"),
-        compress: true,
-        port: 9000,
-        historyApiFallback: true
+        hot: true,
+        historyApiFallback: true,
+        port: 9000
     }
 }
 module.exports = webpackConfig
