@@ -1,0 +1,18 @@
+body{
+  margin: 0;
+}
+*{
+  box-sizing: border-box;
+}
+.left-menu{
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 240px;
+  background: #ffffff;
+  box-shadow: 13px -2px 17px -12px rgba(41,50,66,.05)
+}
+.container{
+  padding-left: 360px;
+}

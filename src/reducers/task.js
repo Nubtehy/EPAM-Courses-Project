@@ -6,11 +6,12 @@ const defaultitems = {
 };
 
 export default function (state = defaultitems, action ) {
+  console.log(action.isloading)
   switch (action.type) {
-    case type.LOAD_TASKS_SUCCESS:
+    case type.LOAD_TASK_SUCCESS:
       return Object.assign ({},state,
         {
-          taskslist:action.tasks,
+          task:action.task,
         },
         {
           loadtaskfail: false
@@ -18,7 +19,7 @@ export default function (state = defaultitems, action ) {
         {
           isloading: action.isloading
         }
-        )
+      )
     case type.LOAD_TASKS_FAIL:
       return Object.assign ({},state,{loadtaskfail:true})
 

@@ -1,5 +1,5 @@
-const webpack = require('webpack')
-const path = require('path')
+const webpack = require('webpack');
+const path = require('path');
 const htmlWebpackPlugin = require('html-webpack-plugin');
 
 
@@ -25,9 +25,19 @@ const webpackConfig  = {
                 exclude: [/node_modules/, /public/]
             },
             {
+            test: /\.scss$/,
+            exclude: /node_modules/,
+            use: [
+              'style-loader',
+              'css-loader',
+              'sass-loader?sourceMap',
+              'resolve-url-loader'
+            ]
+            },
+            {
                 test: /\.css$/,
-                loader: "style-loader!css-loader!autoprefixer-loader",
-                exclude: [/node_modules/, /public/]
+                loader: "style-loader!css-loader!autoprefixer-loader!resolve-url-loader",
+                exclude: [/public/]
             },
             {
                 test: /\.gif$/,
@@ -57,7 +67,8 @@ const webpackConfig  = {
             {
                 test: /\.json$/,
                 loader: "json-loader"
-            }
+            },
+            { test: /\.(png|woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' }
         ]
     },
     plugins: [
