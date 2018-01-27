@@ -1,6 +1,6 @@
 	/*
   	Flaticon icon font: Flaticon
-  	Creation date: 22/01/2018 23:28
+  	Creation date: 27/01/2018 13:48
   	*/
 
 @font-face {
@@ -29,13 +29,16 @@ font-style: normal;
 margin-left: 20px;
 }
 
-.flaticon-flag:before { content: "\f100"; }
-.flaticon-close:before { content: "\f101"; }
-.flaticon-multimedia:before { content: "\f102"; }
-.flaticon-interface:before { content: "\f103"; }
-.flaticon-chain:before { content: "\f104"; }
-.flaticon-people:before { content: "\f105"; }
-.flaticon-list-3:before { content: "\f106"; }
-.flaticon-list-2:before { content: "\f107"; }
-.flaticon-list-1:before { content: "\f108"; }
-.flaticon-list:before { content: "\f109"; }
+.flaticon-arrows-2:before { content: "\f100"; }
+.flaticon-arrows:before { content: "\f101"; }
+.flaticon-arrows-1:before { content: "\f102"; }
+.flaticon-flag:before { content: "\f103"; }
+.flaticon-close:before { content: "\f104"; }
+.flaticon-multimedia:before { content: "\f105"; }
+.flaticon-interface:before { content: "\f106"; }
+.flaticon-chain:before { content: "\f107"; }
+.flaticon-people:before { content: "\f108"; }
+.flaticon-list-3:before { content: "\f109"; }
+.flaticon-list-2:before { content: "\f10a"; }
+.flaticon-list-1:before { content: "\f10b"; }
+.flaticon-list:before { content: "\f10c"; }
