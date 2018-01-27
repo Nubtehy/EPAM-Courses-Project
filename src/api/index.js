@@ -3,8 +3,12 @@ import axios from 'axios';
 import { apiPrefix } from '../../etc/config.json';
 
 export default {
-  listTask() {
-    return axios.get(`${apiPrefix}/tasks`);
+  listTask(filterValue) {
+    return axios.get(`${apiPrefix}/tasks`,  {params: {
+        offset: filterValue.offset,
+        limit: filterValue.limit
+      }
+    });
   },
   singleTask(Id) {
     return axios.get(`${apiPrefix}/tasks/${Id}`);

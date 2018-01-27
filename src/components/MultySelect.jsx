@@ -44,7 +44,7 @@ class MultiSelectField extends Component {
             multi
             onChange={this.handleSelectChange}
             options={options}
-            placeholder="Select your favourite(s)"
+            placeholder="Select team"
             removeSelected={this.state.removeSelected}
             rtl={this.state.rtl}
             simpleValue

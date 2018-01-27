@@ -6,7 +6,6 @@ const defaultitems = {
 };
 
 export default function (state = defaultitems, action ) {
-  console.log(action.isloading)
   switch (action.type) {
     case type.LOAD_TASK_SUCCESS:
       return Object.assign ({},state,

@@ -1,3 +1,4 @@
+@import "../assets/styles/color";
 body{
   background: #f2f3f8;
 }
@@ -6,4 +7,34 @@ body{
   background-size: contain;
   width: 100px;
   height: 100px;
+}
+.t-block{
+  background: #ffffff;
+  margin: 20px;
+  padding: 20px;
+  box-shadow: 13px -2px 17px -12px rgba(41,50,66,.05);
+  &-head{
+    padding: 0 0 20px;
+    border-bottom: 1px solid $colorgGrey;
+    margin-bottom: 20px;
+    h1{
+      margin: 0;
+    }
+  }
+  &-table{
+    width: 100%;
+    border-collapse: collapse;
+    th{
+      background: $tableHead;
+      padding: 10px;
+    }
+
+    tr:nth-child(even){
+      background: $tableHead;
+    }
+    td{
+      padding: 10px;
+
+    }
+  }
 }

@@ -5,7 +5,8 @@ import htmlToDraft from 'html-to-draftjs';
 import { Editor } from 'react-draft-wysiwyg';
 import Select from 'react-select';
 import '../../node_modules/react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
-import MultySelect from '../components/MultySelect.jsx'
+import MultySelect from '../components/MultySelect.jsx';
+import SelectItem from '../components/Select.jsx';
 
 class TaskPage extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class TaskPage extends Component {
     this.state = {
       editorState: EditorState.createEmpty(),
       title: '',
-      team: ''
+      team: '',
+      status: 2
     };
     this.Additem.bind(this)
   }
@@ -33,7 +35,8 @@ class TaskPage extends Component {
     const taskitem = {
       title: this.state.title,
       description: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
-      team: this.state.team
+      team: this.state.team,
+      status: this.state.status
     }
     this.props.submitTask(taskitem);
     this.props.hideEditor();
@@ -42,6 +45,11 @@ class TaskPage extends Component {
   addTeam = (team) =>{
     this.setState({
       team: team
+    });
+  }
+  addStatus = (status) =>{
+    this.setState({
+      status: status
     });
   }
   handleChangeTitle=(event)=> {
@@ -55,7 +63,7 @@ class TaskPage extends Component {
     return (
       <div>
         <input type='text' className='form-input' value={this.state.title} onChange={this.handleChangeTitle} placeholder='Add task title'/>
-
+      <SelectItem Status={this.addStatus} />
       <Editor
         editorState={editorState}
         onChange={ html => this.setState({ content: html }) }

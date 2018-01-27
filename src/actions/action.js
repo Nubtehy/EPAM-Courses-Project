@@ -7,10 +7,10 @@ export function addNewTask (task) {
     task
   }
 }
-export function showtasks (task) {
+export function showTasks (filterValue) {
+  console.log(filterValue,'filterValue')
   return function (dispatch) {
-    api.listTask().then(({ data }) => {
-      console.log(data)
+    api.listTask(filterValue).then(({ data }) => {
       dispatch({
         type: type.LOAD_TASKS_SUCCESS,
         tasks: data
@@ -45,7 +45,8 @@ export function singleTask (id) {
       )
   }
 }
-export function removeTask (id) {
+export function removeTask (id,filterValues) {
+  console.log(filterValues, 'remove')
   return function (dispatch) {
     dispatch({
       type: type.ISLOADING,
@@ -57,7 +58,7 @@ export function removeTask (id) {
         task: data,
         isloading: false
       })
-      dispatch(showtasks())
+      dispatch(showTasks(filterValues))
       }
     ).catch(err =>
         dispatch({
@@ -68,14 +69,15 @@ export function removeTask (id) {
   }
 }
 
-export function createTask (task) {
+export function createTask (task,filterValues) {
+  console.log(filterValues)
   return function (dispatch) {
     dispatch({
       type: type.ISLOADING,
       isloading: true
     })
     api.createTask(task).then(({ data }) => {
-      dispatch(showtasks())
+      dispatch(showTasks(filterValues))
       }
     ).catch(err =>
         dispatch({
@@ -84,4 +86,17 @@ export function createTask (task) {
         })
       )
   }
+}
+export function  updateTaskFilter (filterValue) {
+  return function (dispatch) {
+    dispatch({
+      type:type.ISLOADING,
+      isloading: true
+    })
+    dispatch({
+      type: type.UPDATETASKFILTER,
+      filter: filterValue
+    })
+  }
+
 }

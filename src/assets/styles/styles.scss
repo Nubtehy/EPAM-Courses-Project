@@ -1,8 +1,26 @@
+@import "color";
 body{
+  font-family: "Poppins";
   margin: 0;
+}
+a:focus{
+  outline: none;
 }
 *{
   box-sizing: border-box;
+}
+.button{
+  background: $colorBlue;
+  border-radius: 25px;
+  padding: 10px 20px;
+  transition: 0.2s ease all;
+  &:focus{
+    outline: none;
+    border: none;
+  }
+  &:hover{
+    background: #7ce9ff;
+  }
 }
 .left-menu{
   height: 100vh;
@@ -11,8 +29,33 @@ body{
   top: 0;
   width: 240px;
   background: #ffffff;
-  box-shadow: 13px -2px 17px -12px rgba(41,50,66,.05)
+  box-shadow: 13px -2px 17px -12px rgba(41,50,66,.05);
+  ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    li{
+      a{
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        color: $colorDark;
+        text-decoration: none;
+        i{
+          color: $colorgGrey;
+          font-size: 30px;
+          padding-right: 20px;
+        }
+        &:hover, &.is-active{
+          background: $colorYellow;
+          i{
+            color: $colorBlue;
+          }
+        }
+      }
+    }
+  }
 }
 .container{
-  padding-left: 360px;
+  padding-left: 240px;
 }

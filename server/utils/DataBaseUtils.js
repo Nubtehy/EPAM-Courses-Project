@@ -10,10 +10,28 @@ export function setUpConnection() {
   mongoose.connect(`mongodb://${config.db.host}:${config.db.port}/${config.db.name}`);
 }
 
-export function listTasks(id) {
-
-  return Task.find().sort( { date: 1 } );
+export function listTasks(filterValue) {
+  const { offset, limit } = filterValue;
+  let tasks = Task.aggregate([
+    {
+      $group: {
+        _id: '$_id',
+      }
+    },
+    {$skip: parseInt(offset)},
+    {$limit: parseInt(limit)},
+  ])
+  let count = Task.count();
+  return Promise.all([tasks, count]).then(values => {
+    return new Promise((resolve, reject) => {
+      resolve({
+        tasks: values[0],
+        count: values[1],
+      })
+    })
+  })
 }
+
 export function singleTask(id) {
   return Task.findOne({id:id});
 }
@@ -24,6 +42,7 @@ export function createTask(data) {
     description: data.description,
     date: Date.now(),
     team: data.team,
+    status: data.status,
   });
 
   return task.save();

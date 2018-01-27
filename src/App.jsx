@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 
-import Navbar from './containers/Navbar.jsx';
+import Navbar from './containers/NavBar.jsx';
 import TaskPage from './containers/TaskPage.jsx';
 import Tasks from './containers/Tasks.jsx';
 import './assets/styles/main.scss';

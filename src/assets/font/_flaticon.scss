@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 22/01/2018 23:28
+    Creation date: 27/01/2018 13:48
     */
 
     @font-face {
@@ -36,24 +36,30 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-flag:before { content: "\f100"; }
-.flaticon-close:before { content: "\f101"; }
-.flaticon-multimedia:before { content: "\f102"; }
-.flaticon-interface:before { content: "\f103"; }
-.flaticon-chain:before { content: "\f104"; }
-.flaticon-people:before { content: "\f105"; }
-.flaticon-list-3:before { content: "\f106"; }
-.flaticon-list-2:before { content: "\f107"; }
-.flaticon-list-1:before { content: "\f108"; }
-.flaticon-list:before { content: "\f109"; }
+    .flaticon-arrows-2:before { content: "\f100"; }
+.flaticon-arrows:before { content: "\f101"; }
+.flaticon-arrows-1:before { content: "\f102"; }
+.flaticon-flag:before { content: "\f103"; }
+.flaticon-close:before { content: "\f104"; }
+.flaticon-multimedia:before { content: "\f105"; }
+.flaticon-interface:before { content: "\f106"; }
+.flaticon-chain:before { content: "\f107"; }
+.flaticon-people:before { content: "\f108"; }
+.flaticon-list-3:before { content: "\f109"; }
+.flaticon-list-2:before { content: "\f10a"; }
+.flaticon-list-1:before { content: "\f10b"; }
+.flaticon-list:before { content: "\f10c"; }
     
-    $font-Flaticon-flag: "\f100";
-    $font-Flaticon-close: "\f101";
-    $font-Flaticon-multimedia: "\f102";
-    $font-Flaticon-interface: "\f103";
-    $font-Flaticon-chain: "\f104";
-    $font-Flaticon-people: "\f105";
-    $font-Flaticon-list-3: "\f106";
-    $font-Flaticon-list-2: "\f107";
-    $font-Flaticon-list-1: "\f108";
-    $font-Flaticon-list: "\f109";
+    $font-Flaticon-arrows-2: "\f100";
+    $font-Flaticon-arrows: "\f101";
+    $font-Flaticon-arrows-1: "\f102";
+    $font-Flaticon-flag: "\f103";
+    $font-Flaticon-close: "\f104";
+    $font-Flaticon-multimedia: "\f105";
+    $font-Flaticon-interface: "\f106";
+    $font-Flaticon-chain: "\f107";
+    $font-Flaticon-people: "\f108";
+    $font-Flaticon-list-3: "\f109";
+    $font-Flaticon-list-2: "\f10a";
+    $font-Flaticon-list-1: "\f10b";
+    $font-Flaticon-list: "\f10c";

@@ -19,11 +19,10 @@ app.use(cors({ origin: '*' }));
 
 // RESTful api handlers
 app.get('/tasks', (req, res) => {
-  db.listTasks().then(data => res.send(data));
+  db.listTasks(req.query).then(data => res.send(data));
 });
 
 app.post('/tasks', (req, res) => {
-  console.log(req.body)
   db.createTask(req.body).then(data => res.send(data));
 });
 
