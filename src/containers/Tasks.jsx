@@ -230,8 +230,7 @@ class Tasks extends Component {
                   <th>Actions</th>
                 </tr>
                 </thead>
-                <tbody>
-                {console.log(taskslist)}
+                <tbody className='fade'>
                 {
                   taskslist && total ? taskslist.map((task, i) => {
                       return (

@@ -7,7 +7,7 @@ const Task = (props) => (
     <tr>
       <td>{props.number+1}</td>
         <td>
-          <a className="title">{props.title}</a>
+          <a className='title'>{props.title}</a>
         </td>
         <td>
           {

@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Navbar from './containers/NavBar.jsx';
 import TaskPage from './containers/TaskPage.jsx';
 import Tasks from './containers/Tasks.jsx';
+import Team from './containers/Team.jsx';
 import './assets/styles/main.scss';
 
 
@@ -24,6 +25,7 @@ const App = () =>{
                 <Switch>
                   <Route exact path='/tasks' component={Tasks} />
                   <Route path='/tasks/:id' component={TaskPage}/>
+                  <Route path='/team/' component={Team}/>
                   <Route component={FourOhFour}/>
                 </Switch>
               </div>

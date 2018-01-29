@@ -10,7 +10,7 @@ import htmlToDraft from 'html-to-draftjs'
 class SelectField extends Component {
   constructor(props) {
     super(props);
-    let value ={};
+    let value =undefined;
 
     if (this.props.value) {
       ({value} = this.props);
@@ -25,10 +25,8 @@ class SelectField extends Component {
   }
   state = {
     removeSelected: false,
-    disabled: false,
     crazy: false,
     stayOpen: false,
-    rtl: false,
   }
 
   handleSelectChange = (value) =>  {
@@ -39,19 +37,20 @@ class SelectField extends Component {
   render () {
     const {disabled, stayOpen, value } = this.state;
     const options = this.props.valuelist;
+
     return (
       <div className="section">
         <h3 className="section-heading">{this.props.label}</h3>
         <Select
           closeOnSelect={!stayOpen}
-          disabled={disabled}
           onChange={this.handleSelectChange}
           options={options}
           placeholder="Select task status"
           removeSelected={this.state.removeSelected}
-          rtl={this.state.rtl}
           simpleValue
           value={value}
+
+
         />
       </div>
     );

@@ -70,13 +70,12 @@ class TaskPage extends Component {
 
   }
   editItem = (editorState) => {
-    console.log(this.state.status)
     const taskitem = {
       _id: this.state._id,
       title: this.state.title,
       description: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
       team: this.state.team,
-      status: this.state.status
+      status: this.state.status.status
     }
     this.props.editTaskSend(taskitem);
     this.props.hideEditor();

@@ -4,23 +4,12 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
 
-  const FLAVOURS = [
-    { label: 'Chocolate', value: '1' },
-    { label: 'Vanilla', value: '2' },
-    { label: 'Strawberry', value: '3' },
-    { label: 'Caramel', value: '4' },
-    { label: 'Cookies and Cream', value: '5' },
-    { label: 'Peppermint', value: '6' },
-  ];
 
-  const WHY_WOULD_YOU = [
-    { label: 'Chocolate (are you crazy?)', value: 'chocolate', disabled: true },
-  ].concat(FLAVOURS.slice(1));
 
 class MultiSelectField extends Component {
   constructor(props) {
     super(props);
-    let value = {};
+    let value = undefined;
     if (this.props.value) {
       ({value} = this.props);
       value = value.map((seletitem)=>{
@@ -34,22 +23,21 @@ class MultiSelectField extends Component {
   state = {
     removeSelected: true,
     disabled: false,
-    crazy: false,
     stayOpen: false,
     rtl: false,
   }
 
   handleSelectChange = (value) =>  {
     this.setState({ value });
-    const teamlist =value.split(",")
-    console.log(teamlist,'addTean')
+    const teamlist = value.split(",")
     this.props.addTeam(teamlist)
   }
 
   render () {
-    const { crazy, disabled, stayOpen, value } = this.state;
-    const options = crazy ? WHY_WOULD_YOU : this.props.valuelist
+    const { disabled, stayOpen, value } = this.state;
+    const options = this.props.valuelist
 
+    console.log(value,"VALUe")
 
     return (
       <div className="section">
