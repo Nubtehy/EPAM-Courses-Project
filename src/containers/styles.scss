@@ -3,7 +3,7 @@ body{
   background: #f2f3f8;
 }
 .loader{
-  background: url("../assets/images/loader.svg") no-repeat center center;
+  background: url("../assets/images/Spinner.gif") no-repeat center center;
   background-size: contain;
   width: 100px;
   height: 100px;
@@ -13,6 +13,11 @@ body{
   margin: 20px;
   padding: 20px;
   box-shadow: 13px -2px 17px -12px rgba(41,50,66,.05);
+  &-right{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
   &-head{
     padding: 0 0 20px;
     border-bottom: 1px solid $colorgGrey;
@@ -20,6 +25,18 @@ body{
     h1{
       margin: 0;
     }
+  }
+  button:not(.button){
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    font-size: 16px;
+    cursor: pointer;
   }
   &-table{
     width: 100%;
@@ -34,7 +51,42 @@ body{
     }
     td{
       padding: 10px;
+      text-align: center;
+      .action-container{
+        justify-content: center;
+        display: flex;
+      }
+      &:nth-child(2){
+        text-align: left;
+      }
+      &.actions{
+        button{
 
+          &.edit:hover{
+            background: $colorBlue;
+            color: #ffffff;
+          }
+          &.delete:hover{
+            background: $colorRed;
+            color: #ffffff;
+          }
+          &.finish:hover{
+            background: $colorGreen;
+            color: #ffffff;
+          }
+          &:focus{
+            outline: none;
+          }
+        }
+      }
     }
+  }
+}
+.flex-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  > *{
+    width: 33%;
   }
 }

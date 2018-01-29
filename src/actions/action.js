@@ -8,45 +8,64 @@ export function addNewTask (task) {
   }
 }
 export function showTasks (filterValue) {
-  console.log(filterValue,'filterValue')
-  return function (dispatch) {
-    api.listTask(filterValue).then(({ data }) => {
-      dispatch({
-        type: type.LOAD_TASKS_SUCCESS,
-        tasks: data
-      })
-      }
-    ).catch(err =>
-        dispatch({
-          type: type.LOAD_TASKS_FAIL,
-          error: err
-        })
-      )
-  }
-}
-export function singleTask (id) {
+
   return function (dispatch) {
     dispatch({
       type: type.ISLOADING,
       isloading: true
     })
-    api.singleTask(id).then(({ data }) => {
-      dispatch({
-        type: type.LOAD_TASK_SUCCESS,
-        task: data,
-        isloading: false
-      })
-      }
-    ).catch(err =>
+      api.listTask(filterValue).then(({ data }) => {
+          dispatch({
+            type: type.ISLOADING,
+            isloading: false
+          })
+          return data
+        }
+      ).then(
+        (data) =>{
+          dispatch({
+            type: type.LOAD_TASKS_SUCCESS,
+            tasks: data
+          })
+        }
+      ).catch(err =>{
+          dispatch({
+            type: type.LOAD_TASKS_FAIL,
+            error: err
+          })
+        }
+      )
+
+  }
+}
+export function updateTask (task,filterValue) {
+  return function (dispatch) {
+    dispatch({
+      type: type.ISLOADING,
+      isloading: true
+    })
+    api.updateTask(task).then(({ data }) => {
+
+          dispatch({
+            type: type.LOAD_UPDATE_SUCCESS,
+            isloading: false
+          })
+          return filterValue
+        }
+      ).then((filterValue)=>{
+        dispatch(showTasks (filterValue))
+      }).catch(err =>{
+        console.log(err)
         dispatch({
-          type: type.LOAD_TASKS_FAIL,
+          type: type.LOAD_UPDATE_FAIL,
           error: err
         })
+        }
       )
+
   }
 }
 export function removeTask (id,filterValues) {
-  console.log(filterValues, 'remove')
   return function (dispatch) {
     dispatch({
       type: type.ISLOADING,
@@ -70,7 +89,6 @@ export function removeTask (id,filterValues) {
 }
 
 export function createTask (task,filterValues) {
-  console.log(filterValues)
   return function (dispatch) {
     dispatch({
       type: type.ISLOADING,
@@ -100,3 +118,4 @@ export function  updateTaskFilter (filterValue) {
   }
 
 }
+

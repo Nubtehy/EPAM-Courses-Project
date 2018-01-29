@@ -1,0 +1,9 @@
+.search{
+  input{
+    width: 100%;
+    padding: 5px;
+    &:focus::placeholder{
+      color: transparent;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+import React, { Component } from 'react'
+import SelectItem from '../Select.jsx';
+import 'react-select/dist/react-select.css';
+import './styles.scss';
+import MultiSelectField from '../MultySelect.jsx'
+
+const Filter = (props) =>{
+  return <div className='slideDown'>
+        <form>
+          <div className='form-row'>
+            <div className='form-row-item'>
+              <SelectItem valuelist={props.status} label={'Select status'} Status={props.setFilterParams}/>
+            </div>
+            <div className='form-row-item'>
+              <MultiSelectField valuelist={props.status} label={'Select team members'}/>
+            </div>
+          </div>
+        </form>
+  </div>
+}
+
+export default Filter

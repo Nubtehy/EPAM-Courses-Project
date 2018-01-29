@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 27/01/2018 13:48
+    Creation date: 27/01/2018 17:31
     */
 
     @font-face {
@@ -36,30 +36,36 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-arrows-2:before { content: "\f100"; }
-.flaticon-arrows:before { content: "\f101"; }
-.flaticon-arrows-1:before { content: "\f102"; }
-.flaticon-flag:before { content: "\f103"; }
-.flaticon-close:before { content: "\f104"; }
-.flaticon-multimedia:before { content: "\f105"; }
-.flaticon-interface:before { content: "\f106"; }
-.flaticon-chain:before { content: "\f107"; }
-.flaticon-people:before { content: "\f108"; }
-.flaticon-list-3:before { content: "\f109"; }
-.flaticon-list-2:before { content: "\f10a"; }
-.flaticon-list-1:before { content: "\f10b"; }
-.flaticon-list:before { content: "\f10c"; }
+    .flaticon-search:before { content: "\f100"; }
+.flaticon-holidays:before { content: "\f101"; }
+.flaticon-tool:before { content: "\f102"; }
+.flaticon-arrows-2:before { content: "\f103"; }
+.flaticon-arrows:before { content: "\f104"; }
+.flaticon-arrows-1:before { content: "\f105"; }
+.flaticon-flag:before { content: "\f106"; }
+.flaticon-close:before { content: "\f107"; }
+.flaticon-multimedia:before { content: "\f108"; }
+.flaticon-interface:before { content: "\f109"; }
+.flaticon-chain:before { content: "\f10a"; }
+.flaticon-people:before { content: "\f10b"; }
+.flaticon-list-3:before { content: "\f10c"; }
+.flaticon-list-2:before { content: "\f10d"; }
+.flaticon-list-1:before { content: "\f10e"; }
+.flaticon-list:before { content: "\f10f"; }
     
-    $font-Flaticon-arrows-2: "\f100";
-    $font-Flaticon-arrows: "\f101";
-    $font-Flaticon-arrows-1: "\f102";
-    $font-Flaticon-flag: "\f103";
-    $font-Flaticon-close: "\f104";
-    $font-Flaticon-multimedia: "\f105";
-    $font-Flaticon-interface: "\f106";
-    $font-Flaticon-chain: "\f107";
-    $font-Flaticon-people: "\f108";
-    $font-Flaticon-list-3: "\f109";
-    $font-Flaticon-list-2: "\f10a";
-    $font-Flaticon-list-1: "\f10b";
-    $font-Flaticon-list: "\f10c";
+    $font-Flaticon-search: "\f100";
+    $font-Flaticon-holidays: "\f101";
+    $font-Flaticon-tool: "\f102";
+    $font-Flaticon-arrows-2: "\f103";
+    $font-Flaticon-arrows: "\f104";
+    $font-Flaticon-arrows-1: "\f105";
+    $font-Flaticon-flag: "\f106";
+    $font-Flaticon-close: "\f107";
+    $font-Flaticon-multimedia: "\f108";
+    $font-Flaticon-interface: "\f109";
+    $font-Flaticon-chain: "\f10a";
+    $font-Flaticon-people: "\f10b";
+    $font-Flaticon-list-3: "\f10c";
+    $font-Flaticon-list-2: "\f10d";
+    $font-Flaticon-list-1: "\f10e";
+    $font-Flaticon-list: "\f10f";

@@ -6,25 +6,39 @@ const defaultitems = {
   isloading: true,
   filter: {
     total: null,
-    itemsPerPage: 10,
+    itemsPerPage: 5,
     currentPage: 0,
-    serch: null
+    serch: null,
+    status: null,
+    search: null,
+    datestart: null,
+    dateend: null
   }
 };
 
 export default function (state = defaultitems, action ) {
-  console.log(state)
   switch (action.type) {
     case type.LOAD_TASKS_SUCCESS:
       return {
         ...state,
         taskslist: action.tasks.tasks,
         loadtaskfail: false,
-        isloading: action.isloading,
+        isloading: false,
         ...{
           filter: {
             ...state.filter,
-            total: action.tasks.count
+            total: action.tasks.count.length? action.tasks.count[0].passing_scores:0,
+          }
+        }
+      }
+    case type.LOAD_UPDATE_SUCCESS:
+      console.log(action,'ACTIOn')
+      return {
+        ...state,
+        isloading: action.isloading,
+        ...{
+          filter: {
+            ...state.filter
           }
         }
       }
@@ -33,7 +47,15 @@ export default function (state = defaultitems, action ) {
 
     case type.ISLOADING:
 
-      return Object.assign ({},state,{isloading:action.isloading})
+      return {
+      ...state,
+      isloading: action.isloading,
+      ...{
+        filter: {
+          ...state.filter
+        }
+      }
+    }
     case type.UPDATETASKFILTER: {
       return {
         ...state,
@@ -44,6 +66,7 @@ export default function (state = defaultitems, action ) {
             id: Math.random(),
             currentPage: action.filter.currentPage != null
               ? action.filter.currentPage : 0,
+            ...action.filter
           },
         }
       };

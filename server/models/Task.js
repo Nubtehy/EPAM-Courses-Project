@@ -7,8 +7,8 @@ const TaskSchema = new Schema({
     title     : { type: String },
     date      : { type: Date },
     description: {type: String},
-    team: {type: String},
-    status: {type: String}
+    team: {type: Array},
+    status: {type: Number}
 });
 
 mongoose.model('Task', TaskSchema);

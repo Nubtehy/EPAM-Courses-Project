@@ -1,0 +1,9 @@
+[
+  { "label": "Canceled", "value": "1" },
+  { "label": "To Do", "value": "2" },
+  { "label": "In Progress", "value": "3"},
+  { "label": "Ready For QA", "value": "4" },
+  { "label": "QA", "value": "5" },
+  { "label": "Done", "value": "6" }
+]
+

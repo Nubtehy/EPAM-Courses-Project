@@ -9,6 +9,24 @@ a:focus{
 *{
   box-sizing: border-box;
 }
+*:before,
+*:after{
+
+  display: table;
+  content: "";
+}
+*:after{
+  clear: both;
+}
+input[type='text']{
+  border: 1px solid $colorgGrey;
+  padding: 10px;
+  border-radius: 5px;
+  &:focus{
+    border-color: $colorBlue;
+    outline: none;
+  }
+}
 .button{
   background: $colorBlue;
   border-radius: 25px;
@@ -58,4 +76,7 @@ a:focus{
 }
 .container{
   padding-left: 240px;
+}
+.Select {
+  z-index: 100;
 }

@@ -6,7 +6,8 @@ export default {
   listTask(filterValue) {
     return axios.get(`${apiPrefix}/tasks`,  {params: {
         offset: filterValue.offset,
-        limit: filterValue.limit
+        limit: filterValue.limit,
+        searchparams: filterValue.filter
       }
     });
   },
@@ -18,7 +19,15 @@ export default {
     return axios.post(`${apiPrefix}/tasks`, data);
   },
 
+  updateTask(data) {
+    return axios.post(`${apiPrefix}/tasks/update`, data);
+  },
+
   deleteTask(Id) {
     return axios.delete(`${apiPrefix}/tasks/${Id}`);
+  },
+
+  listTeam() {
+    return axios.get(`${apiPrefix}/team`);
   }
 }

@@ -3,38 +3,42 @@ import createClass from 'create-react-class';
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import 'react-select/dist/react-select.css';
+import { ContentState, EditorState } from 'draft-js'
+import htmlToDraft from 'html-to-draftjs'
 
-const Status = [
-  { label: 'Canceled', value: '1' },
-  { label: 'To Do', value: '2' },
-  { label: 'In Progress', value: '3' },
-  { label: 'Ready For QA', value: '4' },
-  { label: 'QA', value: '5' },
-  { label: 'Done', value: '6' },
-];
-
-const WHY_WOULD_YOU = [
-  { label: 'Chocolate (are you crazy?)', value: 'chocolate', disabled: true },
-].concat(Status.slice(1));
 
 class SelectField extends Component {
+  constructor(props) {
+    super(props);
+    let value ={};
+
+    if (this.props.value) {
+      ({value} = this.props);
+      value = value.map((seletitem)=>{
+        return {label:seletitem.label,value:seletitem.valu}
+      })
+      value = value[0];
+    }
+    this.state = {
+      value: value
+    };
+  }
   state = {
-    removeSelected: true,
+    removeSelected: false,
     disabled: false,
     crazy: false,
     stayOpen: false,
-    value: [],
     rtl: false,
   }
 
   handleSelectChange = (value) =>  {
     this.setState({ value });
-    this.props.Status(value)
+    this.props.Status({status:value, currentPage:0})
   }
 
   render () {
-    const { crazy, disabled, stayOpen, value } = this.state;
-    const options = crazy ? WHY_WOULD_YOU : Status;
+    const {disabled, stayOpen, value } = this.state;
+    const options = this.props.valuelist;
     return (
       <div className="section">
         <h3 className="section-heading">{this.props.label}</h3>

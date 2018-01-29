@@ -18,16 +18,21 @@ app.use( bodyParser.json() );
 app.use(cors({ origin: '*' }));
 
 // RESTful api handlers
+
 app.get('/tasks', (req, res) => {
   db.listTasks(req.query).then(data => res.send(data));
+});
+
+app.get('/team', (req, res) => {
+  db.listTeam(req.query).then(data => res.send(data));
 });
 
 app.post('/tasks', (req, res) => {
   db.createTask(req.body).then(data => res.send(data));
 });
 
-app.get('/tasks/:id', (req, res) => {
-  db.singleTask(req.params.id).then(data => {
+app.post('/tasks/update', (req, res) => {
+  db.updateTask(req.body).then(data => {
     if (data){
       res.send(data)
     } else{

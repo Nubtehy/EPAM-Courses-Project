@@ -18,40 +18,56 @@ import 'react-select/dist/react-select.css';
   ].concat(FLAVOURS.slice(1));
 
 class MultiSelectField extends Component {
-    state = {
-      removeSelected: true,
-      disabled: false,
-      crazy: false,
-      stayOpen: false,
-      value: [],
-      rtl: false,
+  constructor(props) {
+    super(props);
+    let value = {};
+    if (this.props.value) {
+      ({value} = this.props);
+      value = value.map((seletitem)=>{
+        return {label:seletitem.name,value:seletitem.id}
+      })
     }
+    this.state = {
+      value: value
+    };
+  }
+  state = {
+    removeSelected: true,
+    disabled: false,
+    crazy: false,
+    stayOpen: false,
+    rtl: false,
+  }
 
-    handleSelectChange = (value) =>  {
-      this.setState({ value });
-      this.props.addTeam(value)
-    }
+  handleSelectChange = (value) =>  {
+    this.setState({ value });
+    const teamlist =value.split(",")
+    console.log(teamlist,'addTean')
+    this.props.addTeam(teamlist)
+  }
 
-    render () {
-      const { crazy, disabled, stayOpen, value } = this.state;
-      const options = crazy ? WHY_WOULD_YOU : FLAVOURS;
-      return (
-        <div className="section">
-          <h3 className="section-heading">{this.props.label}</h3>
-          <Select
-            closeOnSelect={!stayOpen}
-            disabled={disabled}
-            multi
-            onChange={this.handleSelectChange}
-            options={options}
-            placeholder="Select team"
-            removeSelected={this.state.removeSelected}
-            rtl={this.state.rtl}
-            simpleValue
-            value={value}
-          />
-        </div>
-      );
-    }
+  render () {
+    const { crazy, disabled, stayOpen, value } = this.state;
+    const options = crazy ? WHY_WOULD_YOU : this.props.valuelist
+
+
+    return (
+      <div className="section">
+        <h3 className="section-heading">{this.props.label}</h3>
+        <Select
+          closeOnSelect={!stayOpen}
+          disabled={disabled}
+          multi
+          onChange={this.handleSelectChange}
+          options={options}
+          placeholder="Select team"
+          removeSelected={this.state.removeSelected}
+          rtl={this.state.rtl}
+          simpleValue
+          value={value}
+        />
+      </div>
+    );
+  }
 }
 export default MultiSelectField
