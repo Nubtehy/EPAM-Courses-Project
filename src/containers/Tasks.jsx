@@ -40,7 +40,7 @@ class Tasks extends Component {
     const { itemsPerPage } = this.props.filter;
     const { currentPage } = this.props.filter
 
-    const { status, search, dateend, datestart} = this.props.filter
+    const { status, search, dateend, datestart, team} = this.props.filter
 
     const offset = itemsPerPage * currentPage;
     const filterValues = {
@@ -50,6 +50,7 @@ class Tasks extends Component {
         status,
         search,
         dateend,
+        team,
         datestart
       }
     };
@@ -145,7 +146,7 @@ class Tasks extends Component {
   sendSearch = (params) =>{
     const { itemsPerPage } = this.props.filter;
     let { currentPage } = this.props.filter
-    const {status, dataend, datastart } = this.props.filter
+    const {status, dataend, datastart, team } = this.props.filter
     const {search} = params;
 
     if (params.currentPage == 0){
@@ -154,15 +155,15 @@ class Tasks extends Component {
     const filterValues ={
       currentPage: currentPage,
       limit: itemsPerPage,
-      status, dataend, datastart, search
+      status, dataend, datastart, search, team
     }
     this.props.tasksFilter(filterValues)
   }
   setFilterParams = (params) =>{
-
+    console.log('SETMULTYSELECT', params)
     const { itemsPerPage } = this.props.filter;
     let { currentPage } = this.props.filter
-    const {status, dataend, datastart} = params;
+    const {team, status, dataend, datastart} = params;
     let search;
     if (params.currentPage == 0){
       currentPage = params.currentPage
@@ -176,7 +177,11 @@ class Tasks extends Component {
     const filterValues ={
       currentPage: currentPage,
       limit: itemsPerPage,
-      status, dataend, datastart, search
+      status,
+      dataend,
+      datastart,
+      search,
+      team
     }
     this.props.tasksFilter(filterValues)
 
@@ -188,6 +193,7 @@ class Tasks extends Component {
     const totalpage = total/itemsPerPage;
     const offset = itemsPerPage*currentPage;
     const totalItems  = taskslist? taskslist.length : total;
+
     return (
       <div className='t-block'>
         <div className='t-block-head flex-container'>
@@ -210,7 +216,7 @@ class Tasks extends Component {
         </div>
         {
           this.state.showFilter ?
-            <Filter status = {Status} setFilterParams={this.setFilterParams}></Filter>
+            <Filter status = {Status} setFilterParams={this.setFilterParams} team={this.props.team}></Filter>
             :
             ''
         }

@@ -5,6 +5,11 @@ import './styles.scss';
 import MultiSelectField from '../MultySelect.jsx'
 
 const Filter = (props) =>{
+
+  let listForMultySelect = props.team.teamlist.map((list)=>{
+    return { label: list.name, value: list.id };
+  })
+
   return <div className='slideDown'>
         <form>
           <div className='form-row'>
@@ -12,7 +17,7 @@ const Filter = (props) =>{
               <SelectItem valuelist={props.status} label={'Select status'} Status={props.setFilterParams}/>
             </div>
             <div className='form-row-item'>
-              <MultiSelectField valuelist={props.status} label={'Select team members'}/>
+              <MultiSelectField valuelist={listForMultySelect} label={'Select team members'} addTeam = { props.setFilterParams}/>
             </div>
           </div>
         </form>

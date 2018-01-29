@@ -30,7 +30,7 @@ class MultiSelectField extends Component {
   handleSelectChange = (value) =>  {
     this.setState({ value });
     const teamlist = value.split(",")
-    this.props.addTeam(teamlist)
+    this.props.addTeam({team:teamlist, currentPage:0})
   }
 
   render () {

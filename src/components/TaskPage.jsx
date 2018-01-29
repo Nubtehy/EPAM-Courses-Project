@@ -13,7 +13,14 @@ import SelectItem from '../components/Select.jsx';
 class TaskPage extends Component {
   constructor(props) {
     super(props);
-    let _id = null, title = '', description = '', status = '', team = [], updatedAt = '', attachments = null, valueTeamForMultySelect=[],teamlist=[];
+    let _id = null,
+      title = '',
+      description = '',
+      status = '',
+      team = [],
+      valueTeamForMultySelect=[],
+      teamlist=[],
+      statuslist=[];
 
     let contentState = ContentState.createFromText('');
     if (this.props.edittask) {
@@ -22,6 +29,11 @@ class TaskPage extends Component {
       team.map((seletitem)=>{
         return teamlist.unshift(seletitem.id)
       })
+
+      status.map((seletitem)=>{
+        return statuslist = seletitem.value;
+      })
+
     }
     if (description){
       const contentBlock = htmlToDraft(description);
@@ -31,12 +43,12 @@ class TaskPage extends Component {
       }
     }
     const editorState = EditorState.createWithContent(contentState);
-    console.log(valueTeamForMultySelect,'    console.log(valueTeamForMultySelect)')
     this.state = {
       _id: _id,
       editorState,
       title: title,
       team: teamlist,
+      statuslist: statuslist,
       status: status,
       valueTeamForMultySelect: valueTeamForMultySelect
     };
@@ -63,7 +75,7 @@ class TaskPage extends Component {
       title: this.state.title,
       description: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
       team: this.state.team,
-      status: this.state.status.status
+      status: this.state.statuslist
     }
     this.props.submitTask(taskitem);
     this.props.hideEditor();
@@ -75,20 +87,23 @@ class TaskPage extends Component {
       title: this.state.title,
       description: draftToHtml(convertToRaw(this.state.editorState.getCurrentContent())),
       team: this.state.team,
-      status: this.state.status.status
+      status: this.state.statuslist
     }
+    console.log(taskitem,"EDIT")
     this.props.editTaskSend(taskitem);
     this.props.hideEditor();
 
   }
   addTeam = (team) =>{
+
     this.setState({
-      team: team
+      team: team.team
     });
   }
   addStatus = (status) =>{
+
     this.setState({
-      status: status
+      statuslist: status.status
     });
   }
   handleChangeTitle=(event)=> {
@@ -97,13 +112,15 @@ class TaskPage extends Component {
   render() {
 
     const { editorState, team, status, valueTeamForMultySelect } = this.state;
+
     let listForMultySelect = this.props.team.teamlist.map((list)=>{
       return { label: list.name, value: list.id };
     })
     return (
       <div>
         <input type='text' className='form-input' value={this.state.title} onChange={this.handleChangeTitle} placeholder='Add task title'/>
-      <SelectItem Status={this.addStatus} valuelist={this.props.status} value={status}/>
+        {console.log(this.state)}
+      <SelectItem Status={this.addStatus} valuelist={this.props.status} value={this.state.status}/>
       <Editor
         editorState={editorState}
         onChange={ html => this.setState({ content: html }) }
@@ -118,7 +135,7 @@ class TaskPage extends Component {
           history: { inDropdown: true },
         }}
       />
-        {console.log(valueTeamForMultySelect,'TASKPAGE')}
+
         <MultySelect addTeam = { this.addTeam } valuelist = {listForMultySelect} value={valueTeamForMultySelect}/>
         <button className='button' onClick={!this.props.edittask? this.addItem : this.editItem}>Save</button>
       </div>

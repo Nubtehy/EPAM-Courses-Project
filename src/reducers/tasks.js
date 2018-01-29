@@ -11,6 +11,7 @@ const defaultitems = {
     serch: null,
     status: null,
     search: null,
+    team: null,
     datestart: null,
     dateend: null
   }

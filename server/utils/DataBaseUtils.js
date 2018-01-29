@@ -24,6 +24,7 @@ export function listTasks(filterValue) {
     const searchParamsObject = JSON.parse(searchparams)
     const paramStatus = parseInt(searchParamsObject.status);
     const paramSearch = searchParamsObject.search;
+    console.log(searchparams);
     if (paramStatus) {
       match = {status: paramStatus}
     }
@@ -105,14 +106,12 @@ export function createTask(data) {
   return task.save();
 }
 export function updateTask (data) {
-  console.log(data)
     const query ={
       "title": data.title,
       "description": data.description,
       "team": data.team,
       "status": data.status
     }
-  //return Task.findOneAndUpdate({_id:data._id}, {$set:query},{ sort: { "date" : 1 }, upsert:true, returnNewDocument : true} );
     return Task.update(
       {_id:data._id},
       {$set:query}

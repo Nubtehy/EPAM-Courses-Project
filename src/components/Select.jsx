@@ -15,7 +15,7 @@ class SelectField extends Component {
     if (this.props.value) {
       ({value} = this.props);
       value = value.map((seletitem)=>{
-        return {label:seletitem.label,value:seletitem.valu}
+        return {label:seletitem.label,value:seletitem.value}
       })
       value = value[0];
     }
