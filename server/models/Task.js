@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 const TaskSchema = new Schema({
     id        : { type: Number },
-    title     : { type: String },
+    title     : { type: String, text: true },
     date      : { type: Date },
     description: {type: String},
     team: {type: Array},

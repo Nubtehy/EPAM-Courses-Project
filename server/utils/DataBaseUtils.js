@@ -24,7 +24,7 @@ export function listTasks(filterValue) {
     const searchParamsObject = JSON.parse(searchparams)
     const paramStatus = parseInt(searchParamsObject.status);
     const paramSearch = searchParamsObject.search;
-    console.log(searchparams);
+
     if (paramStatus) {
       match = {status: paramStatus}
     }
